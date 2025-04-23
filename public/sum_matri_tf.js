@@ -1,5 +1,9 @@
 //Arhivo js que utiliza TensorFlow.js para sumar matrices de forma aleatoria y mostrar el resultado en la página web
 
+tf.setBackend('cpu').then(() => {
+    console.log('Backend configurado a CPU');
+});
+
 function generarMatrices(){
     let filas = parseInt(document.getElementById("filas").value);
     let columnas = parseInt(document.getElementById("columnas").value);
@@ -33,8 +37,9 @@ for (let i = 1; i <= 2; i++){
 }    
 
 function sumarMatrices() {
-    let matriz1 = Array.from(document.querySelectorAll('.matriz1')).map(cell => Number(cell.textContent));
-    let matriz2 = Array.from(document.querySelectorAll('.matriz2')).map(cell => Number(cell.textContent));
+    // Obtener los valores de las matrices desde los inputs
+    let matriz1 = Array.from(document.querySelectorAll('.matriz1')).map(cell => Number(cell.value));
+    let matriz2 = Array.from(document.querySelectorAll('.matriz2')).map(cell => Number(cell.value));
 
     let filas = parseInt(document.getElementById("filas").value);
     let columnas = parseInt(document.getElementById("columnas").value);
